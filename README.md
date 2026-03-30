@@ -1,36 +1,73 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Clock - Horloge En Ligne
 
-## Getting Started
+Application d'horloge en ligne (Next.js + TypeScript) avec affichage plein ecran, modes digital/analogique/flip, fuseaux horaires et themes.
 
-First, run the development server:
+## Projet en ligne
+
+Lien public: https://clock.arthurp.fr
+
+Ce lien est volontairement present dans ce README pour renforcer le backlink vers le projet en production.
+
+## Fonctionnalites
+
+- Horloge en temps reel (rafraichissement fin)
+- Modes: `digital`, `analog`, `flip`
+- Format horaire: `12h` / `24h`
+- Affichage optionnel des secondes
+- Selection de fuseau horaire (liste IANA)
+- Themes visuels
+- Parametres persistants dans le navigateur
+- URL partageable avec les parametres
+
+## SEO
+
+- `robots.ts` et `sitemap.ts` configures
+- Pages `loading`, `error`, `not-found`
+- Balises et structure optimisees pour l'indexation
+
+## Parametres URL
+
+| Parametre | Valeurs | Description |
+|---|---|---|
+| `tz` | ex: `Europe/Paris` | Fuseau horaire |
+| `type` | `digital`, `analog`, `flip` | Type d'horloge |
+| `format` | `12h`, `24h` | Format horaire |
+| `seconds` | `true`, `false` | Afficher les secondes |
+| `theme` | id du theme | Theme visuel |
+
+Exemple:
+
+`https://clock.arthurp.fr?tz=Europe/Paris&type=analog&format=24h&seconds=true&theme=midnight`
+
+## Lancer le projet
+
+Prerequis:
+
+- Node.js 18+
+- npm
+
+Installation et dev:
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Build production:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build
+npm start
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Learn More
+## Stack
 
-To learn more about Next.js, take a look at the following resources:
+- Next.js
+- React
+- TypeScript
+- Tailwind CSS
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Licence
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+MIT
