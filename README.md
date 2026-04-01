@@ -1,73 +1,67 @@
-# Clock - Horloge En Ligne
+# Clock
 
-Application d'horloge en ligne (Next.js + TypeScript) avec affichage plein ecran, modes digital/analogique/flip, fuseaux horaires et themes.
+Horloge en ligne construite avec Next.js, React et TypeScript.
 
-## Projet en ligne
+## Site public
 
-Lien public: https://clock.arthurp.fr
+https://clock.arthurp.fr
 
-Ce lien est volontairement present dans ce README pour renforcer le backlink vers le projet en production.
-
-## Fonctionnalites
-
-- Horloge en temps reel (rafraichissement fin)
-- Modes: `digital`, `analog`, `flip`
-- Format horaire: `12h` / `24h`
-- Affichage optionnel des secondes
-- Selection de fuseau horaire (liste IANA)
-- Themes visuels
-- Parametres persistants dans le navigateur
-- URL partageable avec les parametres
-
-## SEO
-
-- `robots.ts` et `sitemap.ts` configures
-- Pages `loading`, `error`, `not-found`
-- Balises et structure optimisees pour l'indexation
-
-## Parametres URL
-
-| Parametre | Valeurs | Description |
-|---|---|---|
-| `tz` | ex: `Europe/Paris` | Fuseau horaire |
-| `type` | `digital`, `analog`, `flip` | Type d'horloge |
-| `format` | `12h`, `24h` | Format horaire |
-| `seconds` | `true`, `false` | Afficher les secondes |
-| `theme` | id du theme | Theme visuel |
-
-Exemple:
-
-`https://clock.arthurp.fr?tz=Europe/Paris&type=analog&format=24h&seconds=true&theme=midnight`
-
-## Lancer le projet
+## Lancer en local
 
 Prerequis:
 
-- Node.js 18+
+- Node.js 22+
 - npm
 
-Installation et dev:
+Commandes:
 
 ```bash
 npm install
 npm run dev
 ```
 
-Build production:
+## Build production local
 
 ```bash
 npm run build
 npm start
 ```
 
+## Docker
 
-## Stack
+Mode developpement:
 
-- Next.js
-- React
-- TypeScript
-- Tailwind CSS
+```bash
+docker compose --profile dev up --build
+```
+
+Mode production:
+
+```bash
+docker compose --profile prod up --build -d
+```
+
+Services compose:
+
+- `clock-dev`: serveur dev sur `http://localhost:3000`
+- `clock-prod`: serveur prod sur `http://localhost:3007`
+
+Variables `.env` utilisees:
+
+- `SITE_URL`
+- `CONTACT_URL`
+- `CONTACT_EMAIL`
+- `NODE_ENV`
+- `PORT`
+- `HOSTNAME`
+- `TZ`
+- `NEXT_TELEMETRY_DISABLED`
+
+## Pages legales
+
+- `/mentions-legales`
+- `/politique-confidentialite`
 
 ## Licence
 
-MIT
+Tous droits reserves - © 2026 Arthur P.

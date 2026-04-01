@@ -1,8 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { SITE_URL } from '@/lib/env';
 
-const SITE_URL = 'https://clock.arthurp.fr';
 const SITE_NAME = 'Horloge en ligne';
 const SITE_DESCRIPTION = 'Horloge en ligne gratuite avec affichage plein écran. Choisissez entre horloge numérique ou analogique, personnalisez les couleurs et le fuseau horaire. Heure exacte en temps réel.';
 

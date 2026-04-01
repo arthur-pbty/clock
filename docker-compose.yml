@@ -1,11 +1,41 @@
 services:
-  web:
-    build: .
+  clock-dev:
+    profiles: ["dev"]
+    build:
+      context: .
+      target: dev
+      args:
+        SITE_URL: ${SITE_URL}
+        CONTACT_URL: ${CONTACT_URL}
+        CONTACT_EMAIL: ${CONTACT_EMAIL}
+    container_name: clock-dev
     ports:
       - "3000:3000"
     volumes:
-      - ./:/app
+      - .:/app
       - /app/node_modules
+      - /app/.next
+    env_file:
+      - .env
     environment:
-      - NODE_ENV=development
-    command: npm run dev
+      NEXT_TELEMETRY_DISABLED: "1"
+      NODE_ENV: development
+
+  clock-prod:
+    profiles: ["prod"]
+    build:
+      context: .
+      target: runner
+      args:
+        SITE_URL: ${SITE_URL}
+        CONTACT_URL: ${CONTACT_URL}
+        CONTACT_EMAIL: ${CONTACT_EMAIL}
+    container_name: clock-prod
+    restart: unless-stopped
+    ports:
+      - "3007:3000"
+    env_file:
+      - .env
+    environment:
+      NEXT_TELEMETRY_DISABLED: "1"
+      NODE_ENV: production

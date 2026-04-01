@@ -1,4 +1,5 @@
 import { ClockApp } from '@/components/ClockApp';
+import { CONTACT_EMAIL, CONTACT_MAILTO, CONTACT_URL } from '@/lib/env';
 
 // Contenu SEO visible en bas de page pour l'indexation Google
 function SEOContent() {
@@ -137,6 +138,8 @@ function SEOContent() {
 }
 
 export default function Home() {
+  const currentYear = new Date().getFullYear();
+
   return (
     <>
       <a href="#main-clock" className="skip-to-content">
@@ -145,17 +148,46 @@ export default function Home() {
       <ClockApp />
       <SEOContent />
       <footer className="seo-footer" role="contentinfo">
-        <p>
-          &copy; {new Date().getFullYear()} Horloge en ligne &mdash; Heure exacte gratuite en temps réel.
-          Horloge numérique, analogique et à bascule avec personnalisation complète.
-        </p>
-        <nav aria-label="Liens rapides">
-          <ul>
-            <li><a href="#main-clock">Horloge</a></li>
-            <li><a href="#features">Fonctionnalités</a></li>
-            <li><a href="#faq">FAQ</a></li>
-          </ul>
-        </nav>
+        <div className="footer-grid">
+          <section aria-labelledby="footer-navigation">
+            <h2 id="footer-navigation">Navigation</h2>
+            <nav aria-label="Navigation principale du site">
+              <ul>
+                <li><a href="/">Accueil</a></li>
+                <li><a href="https://arthurp.fr" target="_blank" rel="noopener noreferrer">Projets</a></li>
+                <li><a href="#features">Fonctionnalites</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href={CONTACT_URL} target="_blank" rel="noopener noreferrer">Contact</a></li>
+              </ul>
+            </nav>
+          </section>
+
+          <section aria-labelledby="footer-contact">
+            <h2 id="footer-contact">Contact</h2>
+            <ul>
+              <li><a href={CONTACT_URL} target="_blank" rel="noopener noreferrer">{CONTACT_URL.replace(/^https?:\/\//, '')}</a></li>
+              <li><a href={CONTACT_MAILTO}>{CONTACT_EMAIL}</a></li>
+              <li><a href="https://arthurp.fr" target="_blank" rel="noopener noreferrer">arthurp.fr</a></li>
+              <li><a href="https://github.com/arthur-pbty" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+            </ul>
+          </section>
+
+          <section aria-labelledby="footer-legal">
+            <h2 id="footer-legal">Informations</h2>
+            <ul>
+              <li><a href="/mentions-legales">Mentions legales</a></li>
+              <li><a href="/politique-confidentialite">Politique de confidentialite</a></li>
+              <li><a href="#main-clock">Horloge en direct</a></li>
+            </ul>
+          </section>
+        </div>
+
+        <div className="footer-bottom">
+          <p>&copy; {currentYear} Arthur P. Tous droits reserves.</p>
+          <p>
+            Fait avec <span aria-hidden="true">❤️</span> et auto-heberge sur Proxmox.
+          </p>
+        </div>
       </footer>
     </>
   );

@@ -1,7 +1,8 @@
 import { MetadataRoute } from 'next';
+import { SITE_URL } from '@/lib/env';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://clock.arthurp.fr';
+  const baseUrl = SITE_URL;
   const lastModified = new Date('2026-03-01');
   
   // Page principale
@@ -11,6 +12,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified,
       changeFrequency: 'weekly',
       priority: 1,
+    },
+    {
+      url: `${baseUrl}/mentions-legales`,
+      lastModified,
+      changeFrequency: 'yearly',
+      priority: 0.4,
+    },
+    {
+      url: `${baseUrl}/politique-confidentialite`,
+      lastModified,
+      changeFrequency: 'yearly',
+      priority: 0.4,
     },
   ];
 
